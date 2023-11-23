@@ -1,0 +1,57 @@
+<div class="productItems">
+  <h2>Products purchased</h2>
+  <nz-table #basicTable>
+    <thead>
+      <tr>
+        <th>Photo</th>
+        <th>Product Name</th>
+        <th>Price</th>
+        <th>Option</th>
+        <th>Quantity</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products">
+        <td>{{ product.photo }}</td>
+        <td>{{ product.productName }}</td>
+        <td>{{ product.price }} </td>
+        <ng-container *ngIf="!product.edit; else editTemplate">
+        <td>{{ product.option }}  </td>
+        <td>{{ product.quantity }}</td>
+          <td>
+            <a  nzType="link" (click)="startEdit(product)"><span nz-icon nzType="edit" nzTheme="outline"> </span></a>
+          </td>
+        </ng-container>
+        <ng-template #editTemplate>
+          <td><input type="text" [(ngModel)]="product.option" /></td>
+          <td><input type="number" [(ngModel)]="product.quantity"  /></td>
+          <td>
+
+
+
+            <a nz-popconfirm
+            nzPopconfirmTitle="Are you sure you want to save changes?"
+            nzPopconfirmPlacement="bottom"
+            (nzOnConfirm)="confirmSaveEdit(product)"
+            (nzOnCancel)="cancelSaveEdit(product)"
+             type="text">Save
+            </a>
+
+
+
+            <a nz-popconfirm
+             nzPopconfirmTitle="Are you sure you want to cancel editing?"
+             nzPopconfirmPlacement="bottom"
+             (nzOnConfirm)="confirmCancelEdit(product)"
+             (nzOnCancel)="cancelEdit(product)"
+             type="text">Cancel
+            </a>
+          </td>
+        </ng-template>
+      </tr>
+      <td colspan="6"> Total price : {{ cartTotalPrice }}</td>
+    </tbody>
+  </nz-table>
+</div>
+ 

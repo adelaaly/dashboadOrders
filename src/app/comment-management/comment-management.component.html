@@ -1,0 +1,8 @@
+<h2>you comments here 
+</h2>
+<div>
+  <p *ngIf="!editingComment">{{ comment.comments }}</p>
+  <button *ngIf="!editingComment" (click)="editComment()">Edit Comment</button>
+  <textarea *ngIf="editingComment" [(ngModel)]="editedComment" rows="4"></textarea><br>
+  <button *ngIf="editingComment" (click)="handleSubmit()">Save Changes</button>
+</div>

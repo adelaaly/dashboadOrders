@@ -1,0 +1,101 @@
+<div>
+  <h2>Order Details</h2>
+  <nz-table #basicTable>
+    <thead>
+      <tr>
+        <th>Order ID</th>
+        <th>Order Date</th>
+        <th>Status</th>
+        <th>Shipping</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngIf="!editMode; else editTemplate">
+        <td>{{ order.id }}</td>
+        <td>{{ order.orderDate | date:'yyyy-MM-dd'}}</td>
+        <td>{{ order.status }}</td>
+        <td>{{ order.shippingStatus }}</td>
+        <td>
+          <a (click)="editOrder()">Edit</a>
+        </td>
+      </tr>
+      <ng-template #editTemplate>
+        <td>{{ order.id }}</td>
+        <td>{{ order.orderDate | date:'yyyy-MM-dd'}}</td>
+        <td>
+          <nz-select [(ngModel)]="updatedStatus" nzPlaceHolder="Select Status">
+            <nz-option nzValue="open" nzLabel="Open"></nz-option>
+            <nz-option nzValue="in-progress" nzLabel="In Progress"></nz-option>
+            <nz-option nzValue="paid" nzLabel="Paid"></nz-option>
+            <nz-option nzValue="pending" nzLabel="Pending"></nz-option>
+          </nz-select>
+        </td>
+        <td>
+          <nz-select [(ngModel)]="updatedShipping" nzPlaceHolder="Select Shipping">
+            <nz-option nzValue="delivered" nzLabel="Delivered"></nz-option>
+            <nz-option nzValue="in-progress" nzLabel="In Progress"></nz-option>
+            <nz-option nzValue="non-response" nzLabel="Non Response"></nz-option>
+            <nz-option nzValue="annuler" nzLabel="Annuler"></nz-option>
+          </nz-select>
+        </td>
+        <td>
+          <a (click)="saveOrder()">Save</a>
+          <a (click)="cancelEdit()">Cancel</a>
+        </td>
+      </ng-template>
+    </tbody>
+  </nz-table>
+</div>
+
+
+
+
+
+<app-customerdata></app-customerdata>
+<app-product-data></app-product-data>
+<app-comment-management></app-comment-management>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+<div>
+  <h2>Order Details</h2>
+<nz-table #basicTable>
+  <thead>
+    <tr>
+      <th>Order ID</th>
+      <th>Order Date</th>
+      <th>Status</th>
+      <th>Shipping</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{ order.id }}</td>
+      <td>{{ order.orderDate | date:'yyyy-MM-dd'}}</td>
+      <td>{{ order.status }}</td>
+      <td>{{ order.Shipping }}</td>
+    </tr>
+    <nz-divider nzType="vertical"></nz-divider>
+
+  </tbody>
+</nz-table>
+</div>
+-->

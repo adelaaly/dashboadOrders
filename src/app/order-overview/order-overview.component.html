@@ -1,0 +1,26 @@
+
+
+  <nz-table #basicTable [nzData]="orders">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Date</th>
+        <th>Customer Name</th>
+        <th>Status</th>
+        <th>Total Price</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of orders" >
+          <td> <a  [routerLink]="['/orders', order.id]"> {{ order.id }} </a></td>
+          <td>{{ order.orderDate | date:'yyyy-MM-dd'}}</td>
+          <td>{{ order.customerLastName }}</td>
+          <td>{{ order.status }}</td>
+          <td>{{ order.cartTotalPrice}} dh</td>
+          <td><a  [routerLink]="['/orders', order.id]" ><span nz-icon nzType="edit" nzTheme="outline"></span></a></td>
+      </tr>
+
+    </tbody>
+  </nz-table>
+  <!-- ctr K c   --> 

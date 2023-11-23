@@ -1,0 +1,41 @@
+/* sidebar.component.css */
+
+.sidebar {
+    width: 200px;
+    height: 100vh;
+    background: #333;
+    color: #fff;
+    padding: 20px;
+
+  }
+  
+  .logo {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  ul li {
+    margin-bottom: 10px;
+  }
+  
+  ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+  }
+  
+  ul li a i {
+    margin-right: 10px;
+  }
+  
+  ul li a:hover {
+    color: #ffcc00;
+  }
+  
